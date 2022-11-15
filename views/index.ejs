@@ -7,10 +7,23 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.0/normalize.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/skeleton/2.0.4/skeleton.css">  
     <title>Document</title>
+    <style>
+        body{
+            color: orangered;
+        }
+        button{
+            margin-left: 50%;
+            color: rgb(109, 104, 251);
+        }
+        a, button{
+            color: rgb(90, 156, 134);
+        }
+    </style>
 </head>
 <body>
     <div class="container">
     <h1>Budgtr App</h1>
+    
     <table>
         <% for(let i = 0; i < allBudget.length; i++) { %>
         <tr>
@@ -21,7 +34,7 @@
         <% } %>
         </tr>
     </table>
-    <a href="/budgets/new"><button>Go To New</button></a>
+    <a href="/budgets/new"><button>New Item</button></a>
     </div>  
 </body>
 </html>
