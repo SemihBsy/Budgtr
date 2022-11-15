@@ -20,7 +20,9 @@ const app = express(); // create our application object
 // Middleware
 //-----------------------------
 app.use(morgan("tiny"));
-app.use(express.urlencoded({extended: true}))
+app.use(methodOverride("_method"));
+app.use(express.urlencoded({extended: true}));
+
 
 //-----------------------------
 // Routes
@@ -34,12 +36,23 @@ app.get("/budgets", (req, res) => {
     });
 });
 
+app.get("/budgets/new", (req, res) => {
+    res.render('new.ejs')
+    });
+
+app.post("/budgets", (req, res) => {
+    budgets.push(req.body);
+    res.redirect("/budgets");
+})    
+
 app.get('/budgets/:index', (req, res) => {
     res.render('show.ejs', {
         budget: budgets[req.params.index],
         index: req.params.index
     });
 });
+
+
 
 
 app.listen(PORT, () => {
