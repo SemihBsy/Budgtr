@@ -19,11 +19,13 @@
             color: rgb(90, 156, 134);
         }
     </style>
+    
 </head>
 <body>
     <div class="container">
     <h1>Budgtr App</h1>
-    
+    <% const bankAccount = allBudget.reduce((a,b) => a + parseInt(b.amount), 0)%>
+    <h2>Total: $<%=bankAccount%></h2>
     <table>
         <% for(let i = 0; i < allBudget.length; i++) { %>
         <tr>
@@ -35,6 +37,13 @@
         </tr>
     </table>
     <a href="/budgets/new"><button>New Item</button></a>
+    <script>
+        if(<%=bankAccount%> < 0){
+            document.body.style.backgroundColor = "#7c0a02";
+        } else if(<%=bankAccount%> > 1000){
+            document.body.style.backgroundColor = "#013220";
+    }
+    </script>
     </div>  
 </body>
 </html>
